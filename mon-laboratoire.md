@@ -7,7 +7,23 @@ public: étudiants
 # 🧱 Mon laboratoire — checklist de l'environnement
 
 > **Pourquoi c'est important :** à l'épreuve, la commission vérifie que l'environnement de travail respecte l'**annexe II.E** du référentiel. Un environnement **non conforme** peut coûter **jusqu'à 15 points**. Une solution réduite à une **simulation** logicielle n'est pas acceptée.
-> Retour : [[mon-parcours]] · Utilisée à partir de : [[S03]]
+> Retour : [[mon-parcours]] · Utilisée à partir de : [[S03]] · Évaluation : [[ma-grille-e6]]
+
+---
+
+## 📋 L'outil officiel de la commission (annexe VII-7)
+
+Cette checklist reprend, **ligne à ligne**, le tableau officiel que la commission utilise pour apprécier ton environnement (« Outil d'aide à l'appréciation de l'environnement technologique »).
+
+| À savoir | |
+|---|---|
+| **Structure** | Un tableau à **trois colonnes** : l'élément exigé · la **description de son implantation** (nom de l'outil, caractéristiques techniques) · les **remarques de la commission** |
+| **Contenu** | **26 lignes** : 8 pour l'environnement commun, 4 pour la sécurité, 10 spécifiques à SISR, plus **une solution au moins** parmi quatre |
+| **Qui le remplit** | L'**établissement** décrit l'implantation ; la **commission** annote la dernière colonne pendant l'interrogation |
+| **Rappels imprimés** | Les logiciels de simulation **ne remplacent pas** des équipements réels ; **une solution réduite à une simulation n'est pas acceptée** |
+| **Pourquoi c'est joué** | Un élément déclaré que tu ne sais pas montrer peut être sanctionné : **jusqu'à −15 points** |
+
+> **Ce que tu dois savoir faire :** pour chaque ligne, **expliquer l'outil** et **le montrer fonctionner**, ou dire clairement qu'il est fourni par l'école.
 
 ---
 

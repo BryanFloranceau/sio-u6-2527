@@ -8,7 +8,7 @@ public: étudiants
 
 # 🧱 Mission N2 — Segmentation et filtrage du réseau du siège
 
-> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[00-lisez-moi]]
+> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[README]]
 
 ## 🪪 Fiche d'identité de la mission
 

@@ -8,7 +8,7 @@ public: étudiants
 
 # 🛡️ Mission N3 — Haute disponibilité de l'application de suivi des visites
 
-> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[00-lisez-moi]]
+> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[README]]
 
 ## 🪪 Fiche d'identité de la mission
 

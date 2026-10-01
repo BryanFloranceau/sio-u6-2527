@@ -15,6 +15,7 @@ Ces ateliers te préparent à l'**épreuve E6 — Administration des systèmes e
 | Fichier | Pour quoi faire |
 |---|---|
 | [[mon-parcours]] | **À lire en premier** : l'épreuve, les 4 phases, ce qui est noté, les pénalités à éviter |
+| [[ma-grille-e6]] | **Comment tu es évalué(e)** : pénalités, 5 réflexes, les 17 compétences avec leurs preuves (la grille officielle en PDF est dans le même dossier `documents`) |
 | [[S01]] | La fiche de la **première séance** |
 | [[S02]] | La fiche de la **deuxième séance** |
 | [[S03]] | La fiche de la **troisième séance** |

@@ -7,7 +7,7 @@ public: étudiants
 # 🗺️ Mon parcours U6
 
 > **En une phrase :** d'ici avril, je construis **deux réalisations** que je sais **refaire et faire évoluer en 1 heure**, je les documente dans un **dossier**, et je m'entraîne à les **défendre à l'oral**.
-> Retour : [[00-lisez-moi]]
+> Retour : [[README]]
 
 ---
 
@@ -24,7 +24,7 @@ public: étudiants
 
 ## 2. 📏 Ce qui est noté
 
-La commission apprécie **17 sous-compétences**, réparties en 3 familles, chacune sur **5 niveaux** (non évalué, non maîtrisé, maîtrise partielle, bonne maîtrise, excellente maîtrise).
+La commission apprécie **17 sous-compétences**, réparties en 3 familles, chacune sur **5 niveaux** (non évalué, non maîtrisé, maîtrise partielle, bonne maîtrise, excellente maîtrise). Le détail est dans [[ma-grille-e6]].
 
 | Famille | Ce que tu dois savoir montrer |
 |---|---|

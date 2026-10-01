@@ -8,7 +8,7 @@ public: étudiants
 
 # 📈 Mission N4 — Supervision et qualité de service du système d'information
 
-> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[00-lisez-moi]]
+> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[README]]
 
 ## 🪪 Fiche d'identité de la mission
 
