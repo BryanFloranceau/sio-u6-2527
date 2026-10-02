@@ -21,7 +21,7 @@ Ces ateliers te préparent à l'**épreuve E6 — Administration des systèmes e
 | [[S03]] | La fiche de la **troisième séance** |
 | [[fiche-gsb]] | Fiche d'identité de **GSB** (laboratoire Galaxy Swiss Bourdin), l'organisation sur laquelle reposent tes réalisations |
 | [[conventions-gsb]] | **Conventions communes** aux missions (valeurs, adressage, lots, exercice d'incident, les 17 compétences en clair) |
-| [[N1-acces-distant-securise]] · [[N2-segmentation-filtrage]] · [[N3-haute-disponibilite]] · [[N4-supervision-qualite-service]] | Les **lettres de mission** (dossier `missions`) |
+| [[N1-acces-distant-securise]] · [[N2-segmentation-filtrage]] · [[N3-haute-disponibilite]] · [[N4-supervision-qualite-service]] · [[E1-architecture-technique]] · [[E2-assistance-helpdesk]] · [[E3-backoffice]] | Les **7 lettres de mission** (dossier `missions`) |
 | [[mon-laboratoire]] | La checklist de ton **laboratoire** (utilisée à partir de la séance 3) |
 
 *D'autres fiches seront ajoutées au fil des séances. Tu n'as jamais plus d'une fiche à regarder à la fois : celle de la prochaine séance.*

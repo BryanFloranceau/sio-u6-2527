@@ -8,7 +8,7 @@ public: étudiants
 
 # 📈 Mission N4 — Supervision et qualité de service du système d'information
 
-> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[README]]
+> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[00-lisez-moi]]
 
 ## 🪪 Fiche d'identité de la mission
 
@@ -64,6 +64,22 @@ La DSI veut **voir avant les utilisateurs** : mesurer la disponibilité, être *
 - **Pas de fausse alerte permanente** : tes seuils doivent être réglés pour que les alertes **signifient quelque chose**.
 - **Aucun secret** (jeton, mot de passe de messagerie) dans le dépôt.
 - **Outils :** libres (Zabbix, Prometheus, Grafana, `iperf3`, pare-feu avec limitation de débit).
+
+---
+
+## 3 bis. 🧰 Ton laboratoire et cette mission
+
+*Tu pars de ce qui existe. **Cette mission est celle qui apporte le plus à ton laboratoire** : la supervision avec alertes n'y figure pas encore. Remplis la table de correspondance de [[conventions-gsb]] §2 dans ton DAT.*
+
+| Élément de la mission | Souvent déjà en place chez toi | Ce que tu construis |
+|---|---|---|
+| **Machines à superviser** | Pare-feu, annuaire, serveurs web, base en grappe, bastion | **Au moins six éléments réels** de ton laboratoire, dont trois services |
+| **Supervision** | Rien en général | **Tout** : contrat de service, indicateurs, outil, tableau de bord, alertes |
+| **Détection d'intrusion (Wazuh)** | En cours | **Complémentaire, pas équivalent** : Wazuh surveille la **sécurité** ; la supervision surveille la **disponibilité et la performance**. Explique la différence dans ton dossier |
+| **Gestion des incidents (GLPI)** | À venir | *(option)* Une alerte qui **ouvre un ticket** automatiquement |
+| **Pare-feu** | pfSense | La **limitation de débit** et la **priorité** du trafic (lot 4) |
+
+**Ta réalisation :** le **contrat de service**, la **supervision avec alertes**, la **gestion d'un incident** et, en extension, la **qualité de service** mesurée avant et après.
 
 ---
 

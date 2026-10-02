@@ -8,7 +8,7 @@ public: étudiants
 
 # 🛡️ Mission N3 — Haute disponibilité de l'application de suivi des visites
 
-> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[README]]
+> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[00-lisez-moi]]
 
 ## 🪪 Fiche d'identité de la mission
 
@@ -63,6 +63,22 @@ La DSI demande que l'application **continue de fonctionner** si un serveur web t
 - **Aucune modification du code** de l'application : elle sert de **charge de travail**.
 - **Chaque panne testée est documentée** : date, action, observation, délai de reprise.
 - **Outils :** libres (HAProxy, Apache ou Nginx, MariaDB, keepalived, `ab` ou `hey` pour la charge).
+
+---
+
+## 3 bis. 🧰 Ton laboratoire et cette mission
+
+*Tu pars de ce qui existe : **tes serveurs web et ta base en grappe sont déjà là**. Ta mission consiste à les **faire tenir** et à le **prouver**. Remplis la table de correspondance de [[conventions-gsb]] §2 dans ton DAT.*
+
+| Élément de la mission | Souvent déjà en place chez toi | Ce que tu construis |
+|---|---|---|
+| **Serveurs web en grappe** | Déjà installés | Un **répartiteur de charge** avec **vérification d'état**, et la **preuve** que le service survit à l'arrêt d'un serveur |
+| **Base de données en grappe (Galera)** | Déjà en place | La **mise à l'épreuve** : arrêt d'un nœud, perte du quorum, reprise, **mesure du délai**. Une grappe remplace la réplication simple de la lettre : **justifie-le** dans ton dossier de choix |
+| **Administration** | Bastion Guacamole | L'accès par clé et le **journal des connexions** (lot 1) |
+| **Répartiteur** | Souvent absent | **HAProxy** ou équivalent ; sa **redondance** en extension |
+| **Plan de continuité** | — | Objectifs de reprise (RTO, RPO), procédures, tableau des pannes testées |
+
+**Ta réalisation :** la **répartition de charge**, la **mise à l'épreuve** de la grappe et le **plan de continuité**. ⚠️ **Une grappe n'est pas une sauvegarde** : une suppression se répand sur tous les nœuds.
 
 ---
 

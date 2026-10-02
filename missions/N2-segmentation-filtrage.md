@@ -8,7 +8,7 @@ public: étudiants
 
 # 🧱 Mission N2 — Segmentation et filtrage du réseau du siège
 
-> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[README]]
+> Conventions : [[conventions-gsb]] · Contexte : [[fiche-gsb]] · Retour : [[00-lisez-moi]]
 
 ## 🪪 Fiche d'identité de la mission
 
@@ -26,7 +26,7 @@ public: étudiants
 
 Le réseau du siège est segmenté en **VLAN** et sa règle de base est simple : **chaque VLAN, sauf « Visiteurs », n'accède qu'aux VLAN « Serveurs » et « Sortie »**. Le VLAN « Visiteurs » ne peut interroger que le DNS et le DHCP et sortir sur Internet. Un commutateur de niveau 3 (**MUTLAB**) fait le routage entre VLAN avec des **listes de contrôle d'accès** ; un pare-feu et un routeur assurent la sortie (**ProxSILAB**, **RTROUT**).
 
-GSB doit héberger en interne l'**application de suivi des visites**, accessible par **Internet** depuis `visite.gsb.coop`. Il faut donc créer une **zone démilitarisée (DMZ, VLAN 350)**. Cette évolution **modifie les règles actuelles** : de nouveaux flux apparaissent (Internet → DMZ, DMZ → base de données) et la règle générale « tout VLAN → Serveurs » doit être revue.
+GSB doit héberger en interne l'**application de suivi des visites**, accessible par **Internet** depuis `visite.gsb.coop`. Il faut donc créer une **zone démilitarisée (DMZ)**. Cette évolution **modifie les règles actuelles** : de nouveaux flux apparaissent (Internet → DMZ, DMZ → base de données) et la règle générale « tout VLAN → Serveurs » doit être revue.
 
 **Questions de ton analyse :** quels **flux nouveaux** ? Quels flux existants sont **touchés** ? Quels **risques de régression** (un service qui ne répond plus) ? Quel cadre juridique pour des **données sur des praticiens** exposées par une application web ?
 
@@ -40,7 +40,7 @@ GSB doit héberger en interne l'**application de suivi des visites**, accessible
 - Le **plan de tests d'acceptation** : flux **autorisés** et flux **interdits** à vérifier.
 
 ### Lot 2 — Mise en œuvre : VLAN, routage et filtrage (socle, ≈ 8 h)
-- Un réseau virtuel avec les **VLAN 10, 60, 150, 300, 400 et 350** ([[conventions-gsb]] §2).
+- Les **zones de ton laboratoire** qui correspondent à celles de GSB ([[conventions-gsb]] §2) : administration, utilisateurs, visiteurs, serveurs, sortie et **DMZ**.
 - Le **routage entre VLAN** et le **filtrage** conformes à la matrice de flux, sur un pare-feu (pfSense ou OPNsense).
 - Un **DHCP** et un **DNS** pour chaque zone ; le **NAT** de sortie.
 - Un **serveur web de test** en DMZ et une **base** dans le VLAN Serveurs, **seul le serveur web** pouvant l'interroger.
@@ -62,6 +62,22 @@ GSB doit héberger en interne l'**application de suivi des visites**, accessible
 - **Pas de simulation seule** : le filtrage tourne sur un pare-feu réel ou virtualisé.
 - **Principe du moindre privilège** : chaque règle ouverte est justifiée dans le DAT.
 - **Outils :** libres (pfSense ou OPNsense, Suricata, Wireshark, `nmap` pour tes tests).
+
+---
+
+## 3 bis. 🧰 Ton laboratoire et cette mission
+
+*Tu pars de ce qui existe : **ne refais pas tes VLAN, fais-les évoluer.** Remplis la table de correspondance de [[conventions-gsb]] §2 dans ton DAT.*
+
+| Élément de la mission | Souvent déjà en place chez toi | Ce que tu construis |
+|---|---|---|
+| **Pare-feu et zones** | pfSense, réseaux en VLAN, règles | **Faire évoluer** l'existant : ouvrir ou réorganiser une DMZ et des flux, **sans casser** ce qui marche |
+| **Plan d'adressage** | Le tien | La **table de correspondance** avec les zones de GSB |
+| **Étude d'impact** | — | **Le cœur de la mission** : matrice des flux avant et après, risques, plan de retour arrière |
+| **Plan de tests** | — | Flux **autorisés** et flux **interdits**, avec résultats |
+| **Détection d'intrusion** | **Wazuh en cours** | *(extension)* Relier Wazuh, ou Suricata sur le pare-feu, à un **scénario d'attaque** qui déclenche une alerte |
+
+**Ta réalisation :** l'évolution de ton réseau (DMZ et flux) **avec son étude d'impact, sa recette et son retour arrière**. Un réseau déjà segmenté sans cette démarche ne suffit pas.
 
 ---
 

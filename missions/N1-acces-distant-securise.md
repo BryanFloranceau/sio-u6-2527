@@ -36,7 +36,7 @@ Par ailleurs, les données de l'entreprise sont **stratégiques** et **répliqu�
 
 ### Lot 1 — VPN pour les visiteurs (socle, ≈ 8 h)
 - Un **serveur VPN** (client-à-site) sur le pare-feu ou sur un serveur dédié, avec **authentification** (comptes d'un annuaire ou clés individuelles).
-- Une **séparation des droits** : un visiteur connecté n'atteint que l'**application de suivi** (DMZ, VLAN 350) ; il n'a accès ni aux autres serveurs ni aux autres VLAN.
+- Une **séparation des droits** : un visiteur connecté n'atteint que l'**application de suivi** (ta zone DMZ) ; il n'a accès ni aux autres serveurs ni aux autres zones.
 - Un **script** qui génère le **profil de connexion** d'un nouveau visiteur et un moyen de **révoquer** un accès.
 - Un **test depuis un terminal mobile** (smartphone ou tablette) et depuis un poste portable.
 
@@ -46,7 +46,7 @@ Par ailleurs, les données de l'entreprise sont **stratégiques** et **répliqu�
 - Des **journaux exploités** : repérer les tentatives échouées et déclencher une alerte simple (par exemple blocage temporaire après plusieurs échecs).
 
 ### Lot 2 — Liaison siège ↔ site distant (extension, ≈ 6 h)
-- Un **tunnel chiffré** entre le pare-feu du siège (Paris) et celui d'un **site distant** (172.22.0.0/24, simulé).
+- Un **tunnel chiffré** entre le pare-feu du siège (Paris) et celui d'un **site distant** (un réseau de ton laboratoire qui joue ce rôle).
 - Une **réplication de données** (par exemple un dossier synchronisé chaque nuit) qui **passe dans le tunnel**.
 - La **vérification** que le trafic de réplication est bien chiffré (capture réseau).
 
@@ -58,6 +58,22 @@ Par ailleurs, les données de l'entreprise sont **stratégiques** et **répliqu�
 - **Disponibilité :** un visiteur doit pouvoir se **reconnecter** après une coupure sans intervention d'un technicien.
 - **Droit :** les données traitées (visiteurs, praticiens) sont **personnelles** : justifie la protection retenue.
 - **Outils :** libres de préférence (WireGuard, OpenVPN, IPsec, OpenSSH ; Apache Guacamole accepté pour le bastion). Compare **au moins deux** technologies de VPN dans ton dossier de choix.
+
+---
+
+## 3 bis. 🧰 Ton laboratoire et cette mission
+
+*Tu pars de ce qui existe : tu ne reconstruis pas. Remplis la table de correspondance de [[conventions-gsb]] §2 dans ton DAT.*
+
+| Élément de la mission | Souvent déjà en place chez toi | Ce que tu construis |
+|---|---|---|
+| **Pare-feu** | pfSense avec tes zones | Le **serveur VPN** et le **filtrage par zone** (lot 1) |
+| **Authentification** | Ton Active Directory | Le **lien entre le VPN et l'annuaire** |
+| **Administration à distance** | **Ton bastion Guacamole** | Les **preuves** : accès par clé, accès restreint, journal des connexions, **aucun accès direct**. S'il est déjà conforme, le lot 3 se réduit à ces preuves et à l'**exploitation des journaux** (alerte sur échecs répétés) |
+| **Site distant** | — | Un second réseau ou une seconde VM de pare-feu *(extension)* |
+| **Terminal mobile** | — | Un test depuis un smartphone ou une tablette |
+
+**Ta réalisation :** le VPN des visiteurs et sa gouvernance (profils, révocation, filtrage), plus la preuve de l'administration sécurisée. Ton DAT décrit **ce que tu ajoutes** et son **impact sur ton existant**.
 
 ---
 

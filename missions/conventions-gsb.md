@@ -6,54 +6,78 @@ public: étudiants
 
 # 📐 Conventions communes aux missions GSB
 
-> À lire **une fois**, avant ta première mission. Toutes les missions ([[N1-acces-distant-securise]] · [[N2-segmentation-filtrage]] · [[N3-haute-disponibilite]] · [[N4-supervision-qualite-service]]) partagent ces règles.
+> À lire **une fois**, avant ta première mission. Toutes les missions ([[E1-architecture-technique]] · [[E2-assistance-helpdesk]] · [[E3-backoffice]] · [[N1-acces-distant-securise]] · [[N2-segmentation-filtrage]] · [[N3-haute-disponibilite]] · [[N4-supervision-qualite-service]]) partagent ces règles.
 > Contexte : [[fiche-gsb]] · Retour : [[README]]
 
 ---
 
 ## 1. 🏷️ Valeurs communes
 
-| Élément | Valeur retenue pour le laboratoire |
+| Élément | Valeur retenue |
 |---|---|
 | **Entreprise** | GSB (Galaxy Swiss Bourdin), siège administratif Europe à Paris |
-| **Domaine interne** | `gsbeu.intra` |
+| **Domaine** | **Ton domaine existant : ne le renomme pas.** Le nom de référence de GSB (`gsbeu.intra`) ne sert que si tu installes un environnement neuf |
+| **Plan d'adressage** | **Le tien.** Aucun plan n'est imposé : tu relies **tes zones** à celles de GSB (§2) |
 | **Visiteurs à équiper** | **480** en métropole (les 60 d'outre-mer sont hors périmètre) |
 | **Application de référence** | Application de suivi des visites et des frais (`visite.gsb.coop`) : le **code fourni par le formateur sert de charge de travail** ; aucun développement n'est demandé |
 
 ---
 
-## 2. 🌐 Plan d'adressage du laboratoire
+## 2. 🌐 Ton réseau et celui de GSB : la table de correspondance
 
-*Sous-ensemble du réseau de GSB. Les lignes marquées « ajout » n'existent pas dans le document d'origine : elles sont propres au laboratoire.*
+**Chacun a son propre laboratoire et son plan d'adressage.** Tu **ne le modifies pas** pour coller à GSB. À la place, tu remplis, dans le **DAT de ta mission**, une table qui relie **les zones de GSB** à **tes réseaux**.
 
-| VLAN | Service | Adressage |
+| Zone de GSB | Rôle | Origine dans GSB | **Ton équivalent** (VLAN, réseau) |
+|---|---|---|---|
+| **Administration** | Postes des techniciens (réseau et système) | VLAN 10 · 192.168.10.0/24 | |
+| **Utilisateurs** | Postes des services (commercial, etc.) | VLAN 60 · 192.168.60.0/24 | |
+| **Visiteurs** | Invités et visiteurs, accès Internet seul | VLAN 150 · 192.168.150.0/24 | |
+| **Serveurs** | Annuaire, bases de données, applications | VLAN 300 · 172.16.0.0/17 | |
+| **Sortie** | Liaison vers le pare-feu et Internet | VLAN 400 · 172.18.0.0/30 | |
+| **DMZ** *(ajout)* | Services joignables depuis Internet | absente du document d'origine | |
+| **Site distant** *(ajout)* | Deuxième site (réplication, VPN site-à-site) | absent du document d'origine | |
+| **Accès des visiteurs en déplacement** *(ajout)* | Clients VPN | absent du document d'origine | |
+
+**Règles réseau d'origine de GSB** (à transposer sur tes zones) :
+- chaque zone (sauf « Visiteurs ») accède uniquement aux zones **Serveurs** et **Sortie** ;
+- la zone **Visiteurs** peut interroger le **DNS** et le **DHCP** et sortir sur Internet.
+
+**Serveurs de référence de GSB et leur équivalent chez toi :**
+
+| GSB | Rôle | **Ton équivalent** |
 |---|---|---|
-| 10 | Réseau et système | 192.168.10.0/24 |
-| 60 | Commercial | 192.168.60.0/24 |
-| 150 | Visiteurs | 192.168.150.0/24 |
-| 300 | Serveurs | 172.16.0.0/17 (le laboratoire utilise 172.16.0.0/24) |
-| 400 | Sortie | 172.18.0.0/30 |
-| 350 | **DMZ** *(ajout)* | 172.20.0.0/24 |
-| — | **Site distant** *(ajout)* | 172.22.0.0/24 |
-| — | **VPN des visiteurs** *(ajout)* | 10.99.0.0/24 |
-
-**Règles réseau d'origine :**
-- chaque VLAN (sauf « Visiteurs ») accède uniquement aux VLAN **Serveurs** et **Sortie** ;
-- le VLAN **Visiteurs** peut interroger le **DNS** et le **DHCP** et sortir sur Internet.
-
-**Serveurs de référence :** REZOLAB (DHCP / DNS, 172.16.0.10) · LABANNU (annuaire, 172.16.0.30) · MESSAGLAB (messagerie, 172.16.0.20) · INTRALAB (intranet, 172.16.0.100) · ProxSILAB (proxy / pare-feu) · MUTLAB (commutateur de niveau 3) · RTROUT (routeur / NAT).
+| REZOLAB | DHCP et DNS | |
+| LABANNU | Annuaire et contrôleur de domaine | *(ton Active Directory)* |
+| MESSAGLAB | Messagerie | |
+| INTRALAB | Intranet | |
+| ProxSILAB | Proxy et pare-feu | *(ton pfSense)* |
+| MUTLAB | Routage entre zones, filtrage | *(ton pfSense ou ton commutateur)* |
+| RTROUT | Routeur et NAT | |
 
 ---
 
-## 3. 🧱 Environnement de travail
+## 3. 🧱 Ton laboratoire : environnement, réalisation, évolution
 
-| Élément | Choix |
-|---|---|
-| **Hyperviseur** | Proxmox VE |
-| **Systèmes** | Debian, **au moins une machine Windows Server** (pour l'annuaire ou les postes) |
-| **Pare-feu / routeur** | pfSense ou OPNsense |
-| **Outils** | Libres, sauf contrainte justifiée dans ton dossier de choix |
-| **Packet Tracer** | Pour **comprendre**, jamais pour **réaliser** : la réalisation tourne sur le laboratoire |
+**Tu as déjà construit un laboratoire.** C'est l'**environnement** exigé par l'annexe II.E. Il ne remplace pas ta réalisation : voici la différence.
+
+| Niveau | Ce que c'est | Où ça se trouve dans ton dossier |
+|---|---|---|
+| **Environnement** | L'infrastructure qui supporte tout : hyperviseur, pare-feu, zones, annuaire, bases de données, accès d'administration… | Ton **DAT d'environnement** (annexe) et le tableau [[mon-laboratoire]] |
+| **Réalisation** | Une solution qui répond à **un besoin de GSB**, avec ses choix justifiés, ses tests, son incident et son exploitation | Ta **mission** : DAT propre, plan de tests, rapports, fiche descriptive |
+| **Évolution** (phase 2 de l'épreuve) | Ce que la commission te demande de **modifier en 1 heure** sur ta réalisation | Ce que ta réalisation te permet de faire évoluer |
+
+👉 **Une mission est une évolution de ton laboratoire existant**, pas une reconstruction. Chaque lettre de mission contient une section **« Ton laboratoire et cette mission »** qui t'indique ce qui existe souvent déjà et ce qui reste à construire.
+
+| Élément | Généralement déjà en place | À vérifier avec [[mon-laboratoire]] |
+|---|---|---|
+| **Hyperviseur** | Proxmox VE | Sauvegarde, accès sécurisé |
+| **Pare-feu et zones** | pfSense, réseaux en VLAN | Règles justifiées, journaux |
+| **Annuaire** | Active Directory, administré par PowerShell | Habilitations, GPO |
+| **Services** | Serveurs web, base en grappe | Répartition de charge, bascules testées |
+| **Administration** | Bastion avec Guacamole | Accès par clé, journal des connexions |
+| **Sécurité** | Détection d'intrusion (Wazuh) en cours | Alertes, scénario d'attaque |
+| **Support** | Gestion des incidents (GLPI) à venir | Tickets, inventaire |
+| **Packet Tracer** | — | Pour **comprendre**, jamais pour **réaliser** |
 
 ---
 
@@ -63,9 +87,10 @@ public: étudiants
 - Le **socle** (obligatoire) fait ≈ 14 à 16 h. Les **extensions** (au choix) ajoutent ≈ 4 à 6 h chacune.
 - **Réalisation 1** : le socle **plus** une extension. **Réalisation 2** : le socle, ou le socle réduit. Le formateur valide ton choix.
 - Chaque lot a ses **résultats attendus**, écrits sous la forme « je dois pouvoir… » : ce sont aussi **tes tests de recette**.
+- **Tu pars de ton laboratoire existant** : ce qui est déjà en place compte comme point de départ, pas comme livrable. **Ce que tu ajoutes ou fais évoluer** est ta réalisation.
 
 ### Ce que tu rends pour chaque mission
-1. Le **DAT** (schéma cible, choix justifiés, plan de tests)
+1. Le **DAT de la mission** (schéma cible, besoin de GSB, choix justifiés, plan de tests, **table de correspondance**)
 2. La **réalisation opérationnelle** sur ton laboratoire
 3. Les **procédures** d'installation et d'exploitation (réutilisables par un tiers)
 4. Le **rapport de tests** et le **rapport d'incident** (voir §5)

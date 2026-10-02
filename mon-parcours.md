@@ -22,6 +22,20 @@ public: étudiants
 
 ---
 
+## 1 bis. 🧱 Mon laboratoire n'est pas ma réalisation
+
+Tu as déjà construit un laboratoire. C'est l'**environnement** que la commission vérifie. Ta **réalisation** est autre chose :
+
+| Niveau | Ce que c'est |
+|---|---|
+| **Environnement** | L'infrastructure qui supporte tout (hyperviseur, pare-feu, zones, annuaire, serveurs…). Tu le décris dans un **DAT d'environnement** |
+| **Réalisation** | Une solution qui répond à **un besoin de GSB**, avec ses choix, ses tests, son incident et son exploitation. **Une mission fait évoluer ton laboratoire** |
+| **Évolution** | Ce que la commission te demande de modifier **en 1 heure** sur ta réalisation |
+
+Détail : [[conventions-gsb]] §3.
+
+---
+
 ## 2. 📏 Ce qui est noté
 
 La commission apprécie **17 sous-compétences**, réparties en 3 familles, chacune sur **5 niveaux** (non évalué, non maîtrisé, maîtrise partielle, bonne maîtrise, excellente maîtrise). Le détail est dans [[ma-grille-e6]].
@@ -59,7 +73,7 @@ La commission apprécie **17 sous-compétences**, réparties en 3 familles, chac
 
 | Phase | Séances | Je vise | Je rends |
 |---|---|---|---|
-| **A — Comprendre et préparer** | S1 → S3 | Comprendre l'épreuve, choisir mes missions, avoir un laboratoire qui démarre | Auto-diagnostic · matrice des missions · laboratoire + checklist |
+| **A — Comprendre et préparer** | S1 → S3 | Comprendre l'épreuve, choisir mes missions, auditer et compléter mon laboratoire | Auto-diagnostic · matrice des missions · audit du laboratoire + checklist |
 | **B — Réalisation 1** | S4 → S9 | Concevoir, installer, superviser, documenter, présenter à l'oral | DAT · réalisation · rapport de tests · rapport d'incident · dossier R1 |
 | **C — Réalisation 2** | S10 → S13 | Compléter les compétences que R1 n'a pas montrées | DAT · réalisation · dossier R2 |
 | **D — Dossier et entraînement** | S14 → S17 | Assembler le dossier, me tester dans les conditions réelles | Dossier complet · simulation de l'épreuve |
@@ -70,7 +84,7 @@ La commission apprécie **17 sous-compétences**, réparties en 3 familles, chac
 |---|---|---|---|
 | **S1** | jeudi 1er octobre 2026 | 13h30 – 17h30 | Le cadre : épreuve, dossier, grille |
 | **S2** | vendredi 9 octobre 2026 | 13h30 – 17h30 | GSB et choix des missions |
-| **S3** | jeudi 29 octobre 2026 | 13h30 – 17h30 | Mon laboratoire |
+| **S3** | jeudi 29 octobre 2026 | 13h30 – 17h30 | Audit de mon laboratoire |
 | **S4** | vendredi 6 novembre 2026 | **8h30 – 12h30** | DAT de la réalisation 1 |
 | **S5** | jeudi 12 novembre 2026 | 13h30 – 17h30 | Réalisation 1 (1/2) |
 | **S6** | vendredi 13 novembre 2026 | **8h30 – 12h30** | Réalisation 1 (2/2) · **point d'étape J1** |
